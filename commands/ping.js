@@ -26,6 +26,7 @@ module.exports = {
     //pull information from the command builder
     const user = int.options.getUser('target');
     const msg = int.options.getString('text');
+    const channel = int.channel;
     const username = user.username;
     const member = int.member;
     const membername = member.user.username;
@@ -33,7 +34,7 @@ module.exports = {
     const visibleMSG = `${username}, ${membername} wanted to let you know that ${msg}!`
     
     int.reply({ epemeral: true, content: ephemeralMSG });
-    int.reply({ epemeral: false, content: visibleMSG });
+    channel.send({ epemeral: false, content: visibleMSG });
     
   },
     
