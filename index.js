@@ -24,7 +24,8 @@ const { MessageCollector } = require('discord.js');
 const { MessageMentions } = require('discord.js');
 
 //other setup
-const fs = require('fs');
+const fs = require('node:fs');
+const path = require('node:path');
 const Database = require("@replit/database");
 const db = new Database();
 const token = process.env.TOKEN;
@@ -99,7 +100,7 @@ for (const file of commandFiles) {
 
 client.on("ready", async () => {
   try {
-    await client.application.commands.set([pingSLASH, /*PUT THE REST OF THE COMMAND NAMES HERE*/]);
+    await client.application.commands.set([pingSLASH, reverseSLASH, /*PUT THE REST OF THE COMMAND NAMES HERE*/]);
     console.log('Slash commands registered!');
   } catch (error) {
     console.error(error);
@@ -107,7 +108,7 @@ client.on("ready", async () => {
   console.log(`Logged in as ${client.user.tag}!`);
   
   //Activity type
-  client.user.setActivity('/help!', { type: ActivityType.Listening });
+  client.user.setActivity('/ping!', { type: ActivityType.Listening });
   
 });
 
