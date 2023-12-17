@@ -1,6 +1,5 @@
 //Any other imports go here
 const { SlashCommandBuilder } = require("discord.js");
-const color = 100000;
 
 module.exports = {
   //Write command build in here
