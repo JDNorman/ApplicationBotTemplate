@@ -105,7 +105,10 @@ client.on("ready", async () => {
     console.error(error);
   }
   console.log(`Logged in as ${client.user.tag}!`);
+  
+  //Activity type
   client.user.setActivity('/help!', { type: ActivityType.Listening });
+  
 });
 
 //APPLICATION COMMANDS SETUP ------------------------------------------//
