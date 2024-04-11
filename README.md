@@ -2,7 +2,9 @@
 
 ╭━━━╮╱╱╱╱╱╱╱╱╱╭╮╱╱╱╱╭━━━╮╭╮╱╱╱╱╱╭╮ ┃╭━╮┃╱╱╱╱╱╱╱╱╭╯╰╮╱╱╱┃╭━╮┣╯╰╮╱╱╱╱┃┃ ┃┃╱┃┣━╮╭┳╮╭┳━┻╮╭╋━━╮┃╰━━╋╮╭╋╮╭┳━╯┣┳━━┳━━╮ ┃╰━╯┃╭╮╋┫╰╯┃╭╮┃┃┃┃━┫╰━━╮┃┃┃┃┃┃┃╭╮┣┫╭╮┃━━┫ ┃╭━╮┃┃┃┃┃┃┃┃╭╮┃╰┫┃━┫┃╰━╯┃┃╰┫╰╯┃╰╯┃┃╰╯┣━━┃ ╰╯╱╰┻╯╰┻┻┻┻┻╯╰┻━┻━━╯╰━━━╯╰━┻━━┻━━┻┻━━┻━━╯
 
-This code is open source and free to personal use, provided the LICENSE is included within all copies of "the Software".
+This is the repo for the Discord Bot Template, a Template for higher-level discord bots. This project is meant to be a utility/helper bot for any developers!
+
+TemplateBot features two basic commands that are easy to edit and build upon, so you can easily change everything you want to make it how you like!
 
 ## Introduction
 

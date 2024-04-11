@@ -1,0 +1,57 @@
+  ## TODO: CHANGE every instance of "botname" to the name of your bot!
+  ## TODO: ON LINE 26 change "JDNorman/TemplateBot" to match your directory name!
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: TemplateBot-deployment
+  namespace: TemplateBot
+  labels:
+    app: TemplateBot-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: TemplateBot-bot
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: TemplateBot-bot
+    spec:
+      containers:
+        - name: TemplateBot-bot
+          image: ghcr.io/JDNorman/TemplateBot-bot:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 500Mi
+              cpu: 100m
+          env:
+            - name: NODE_ENV
+              value: 'production'
+            - name: BOT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: bot-secrets
+                  key: BOT_TOKEN
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: bot-secrets
+                  key: BOT_TOKEN
+            - name: NEW_RELIC_APP_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: bot-secrets
+                  key: NEW_RELIC_APP_NAME
+            - name: NEW_RELIC_LISENCE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: bot-secrets
+                  key: NEW_RELIC_LISENCE_KEY
+      imagePullSecrets:
+        -name: regcred
