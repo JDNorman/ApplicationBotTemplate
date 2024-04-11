@@ -22,7 +22,7 @@ This code is open source and free to personal use, provided the LICENSE is inclu
 - First notice your `APPLICATION ID` and your `PUBLIC KEY` on the `General Information` tab, we will need those later.
 - Also notice the `Terms of Service URL` and the `Privacy Policy URL` text boxes - if your discord bot ever reaches 100 servers, you must have both.
 
-![alt text](https://github.com/JDNorman/ApplicationBotTemplate/blob/1b0884343c18eb964a5e9fa95239d13f2fbae5cd/images/Screenshot%202024-04-10%20220049.png)
+![alt text](https://github.com/JDNorman/ApplicationBotTemplate/blob/194d1af331b18908d11f8530d756cee5bfea8c81/images/Screenshot%202024-04-10%20215616.png)
 
 - You might be interested in a User Install where a member can allow the application to access member accounts. If so, you may go to the `Installation` tab and check the `User Install` checkbox and hit save.
 
@@ -31,7 +31,7 @@ This code is open source and free to personal use, provided the LICENSE is inclu
 - For our purposes, we will be using github and we will make our repo and clone it there.
 - First go to github.com and login. Next select import a new repo.
 
-![alt text](image.png)
+![alt text](https://github.com/JDNorman/ApplicationBotTemplate/blob/194d1af331b18908d11f8530d756cee5bfea8c81/images/Screenshot%202024-04-10%20220518.png)
 
 - Use this link to clone this repo and name your repo whatever you want! [https://github.com/JDNorman/TemplateBot.git](https://github.com/JDNorman/TemplateBot.git)
 - Confirm you want to import and wait for it to finish preparing the new repo.
