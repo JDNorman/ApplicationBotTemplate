@@ -1,30 +1,16 @@
-import {Currency, Faction, PlanetEventType} from '../types';
-import currency from './currency.json';
-import factions from './factions.json';
-import planetEvents from './planetEvents.json';
-import planets from './planets.json';
-import sectors from './sectors.json';
+// Make sure your mapping types are set up in the '../types' file
+import {States, Hotels} from '../types';
+import states from './states.json';
+import hotels from './example.json';
 
 interface JsonFile {
   [key: string]: string;
 }
 
-export function getCurrencyName(id: number): Currency {
-  return (currency as JsonFile)[id] as Currency;
+export function getStatesName(id: number): States {
+  return (/*states from import*/ states as JsonFile)[id] as States;
 }
 
-export function getFactionName(id: number): Faction {
-  return (factions as JsonFile)[id] as Faction;
-}
-
-export function getPlanetEventType(id: number): PlanetEventType {
-  return (planetEvents as JsonFile)[id] as PlanetEventType;
-}
-
-export function getPlanetName(id: number): string {
-  return (planets as JsonFile)[id];
-}
-
-export function getSectorName(id: number): string {
-  return (sectors as JsonFile)[id];
+export function getHotelName(id: number): Hotels {
+  return (/*hotels from import*/hotels as JsonFile)[id] as Hotels;
 }

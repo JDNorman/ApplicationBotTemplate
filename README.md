@@ -42,3 +42,24 @@ TemplateBot features two basic commands that are easy to edit and build upon, so
 ### Step 3 - 3rd Party Software
 
 - ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- Add adding a font somewhere
