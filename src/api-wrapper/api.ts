@@ -1,14 +1,6 @@
 import {
-  WarInfo,
-  Status,
-  MergedPlanetData,
-  MergedCampaignData,
-  MergedPlanetEventData,
   ApiData,
-  Assignment,
-  NewsFeedItem,
-  PlanetStats,
-  PlanetStatsItem,
+  PopulationInfo,
 } from './types';
 import {getFactionName, getPlanetEventType, getPlanetName} from './mapping';
 import {writeFileSync} from 'fs';
@@ -16,78 +8,84 @@ import {getAllPlanets} from './planets';
 import axios, {AxiosRequestConfig} from 'axios';
 import {config} from '../config';
 
-const API_URL = 'https://api.live.prod.thehelldiversgame.com/api';
+const API_URL = 'https://countriesnow.space/api/v0.1/countries/';
 const {IDENTIFIER} = config;
 
-export const seasons = {
-  current: 801,
-  seasons: [801, 805],
-};
+const population = {
+  cities: 'cities',
+  cityFilter: 'cities/filter/',
+  range: 'range',
+  population: ''
+}
 
 // create an empty object to store the data
 export let data: ApiData = {
-  WarInfo: {
-    warId: 0,
-    startDate: 0,
-    endDate: 0,
-    minimumClientVersion: '',
-    planetInfos: [],
-    homeWorlds: [],
-    capitalInfos: [],
-    planetPermanentEffects: [],
-  },
-  Status: {
-    warId: 0,
-    time: 0,
-    timeUtc: 0,
-    impactMultiplier: 0,
-    storyBeatId32: 0,
-    planetStatus: [],
-    planetAttacks: [],
-    campaigns: [],
-    communityTargets: [],
-    jointOperations: [],
-    planetEvents: [],
-    planetActiveEffects: [],
-    activeElectionPolicyEffects: [],
-    globalEvents: [],
-    superEarthWarResults: [],
-  },
-  Planets: [],
-  Campaigns: [],
-  PlanetEvents: [],
-  ActivePlanets: [],
-  PlanetAttacks: [],
-  Events: [],
-  Players: {
-    Humans: 0,
-    Total: 0,
-    Automaton: 0,
-    Terminids: 0,
-  },
-  UTCOffset: 0,
-  Assignment: [],
-  NewsFeed: [],
-  PlanetStats: {
-    galaxy_stats: {
-      missionsWon: 0,
-      missionsLost: 0,
-      missionTime: 0,
-      bugKills: 0,
-      automatonKills: 0,
-      illuminateKills: 0,
-      bulletsFired: 0,
-      bulletsHit: 0,
-      timePlayed: 0,
-      deaths: 0,
-      revives: 0,
-      friendlies: 0,
-      missionSuccessRate: 0,
-      accurracy: 0,
-    },
-    planets_stats: [],
-  },
-};
+
+}
+
+// export let data: ApiData = {
+//   WarInfo: {
+//     warId: 0,
+//     startDate: 0,
+//     endDate: 0,
+//     minimumClientVersion: '',
+//     planetInfos: [],
+//     homeWorlds: [],
+//     capitalInfos: [],
+//     planetPermanentEffects: [],
+//   },
+//   Status: {
+//     warId: 0,
+//     time: 0,
+//     timeUtc: 0,
+//     impactMultiplier: 0,
+//     storyBeatId32: 0,
+//     planetStatus: [],
+//     planetAttacks: [],
+//     campaigns: [],
+//     communityTargets: [],
+//     jointOperations: [],
+//     planetEvents: [],
+//     planetActiveEffects: [],
+//     activeElectionPolicyEffects: [],
+//     globalEvents: [],
+//     superEarthWarResults: [],
+//   },
+//   Planets: [],
+//   Campaigns: [],
+//   PlanetEvents: [],
+//   ActivePlanets: [],
+//   PlanetAttacks: [],
+//   Events: [],
+//   Players: {
+//     Humans: 0,
+//     Total: 0,
+//     Automaton: 0,
+//     Terminids: 0,
+//   },
+//   UTCOffset: 0,
+//   Assignment: [],
+//   NewsFeed: [],
+//   PlanetStats: {
+//     galaxy_stats: {
+//       missionsWon: 0,
+//       missionsLost: 0,
+//       missionTime: 0,
+//       bugKills: 0,
+//       automatonKills: 0,
+//       illuminateKills: 0,
+//       bulletsFired: 0,
+//       bulletsHit: 0,
+//       timePlayed: 0,
+//       deaths: 0,
+//       revives: 0,
+//       friendlies: 0,
+//       missionSuccessRate: 0,
+//       accurracy: 0,
+//     },
+//     planets_stats: [],
+//   },
+// };
 
 const axiosOpts: AxiosRequestConfig = {
   headers: {
@@ -97,7 +95,24 @@ const axiosOpts: AxiosRequestConfig = {
 
 let getDataCounter = 0;
 export async function getData() {
-  const season = seasons.current;
+  // https://countriesnow.space/api/v0.1/countries/population/cities
+  // https://countriesnow.space/api/v0.1/countries/population/cities/filter
+  // https://countriesnow.space/api/v0.1/countries/positions/range
+  // https://countriesnow.space/api/v0.1/countries/positions
+  // https://countriesnow.space/api/v0.1/countries/flag/images
+  // https://countriesnow.space/api/v0.1/countries/flag/unicode
+  // https://countriesnow.space/api/v0.1/countries/currency
+  // https://countriesnow.space/api/v0.1/countries/capital
+  // https://countriesnow.space/api/v0.1/countries/state/cities
+  // https://countriesnow.space/api/v0.1/countries/iso
+  // https://countriesnow.space/api/v0.1/countries/codes
+  // https://countriesnow.space/api/v0.1/countries/states
+  const populationInfoApi = await (
+    await axios.get(`${API_URL}/population/${population}`, axiosOpts)
+  ).data;
+  const populationInfo = populationInfoApi as PopulationInfo;
+
+
   // https://api.live.prod.thehelldiversgame.com/api/WarSeason/801/Status
   // https://api.live.prod.thehelldiversgame.com/api/WarSeason/801/WarInfo
   // https://api.live.prod.thehelldiversgame.com/api/NewsFeed/801

@@ -19,7 +19,7 @@ const configObj: Record<string, string | number | undefined> = {
   DATABASE_URL: process.env.DATABASE_URL,
 
   // Bot Commands
-  EMBED_COLOUR: process.env.EMBED_COLOUR || 'DarkPurple',
+  EMBED_COLOUR: process.env.EMBED_COLOUR || 'Blue',
   FOOTER_MESSAGE:
     'Bug reports and suggestions welcome in Discord!\n' +
     `/discord | v${version} | made by Major (@theyodastream)`,

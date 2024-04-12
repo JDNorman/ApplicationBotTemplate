@@ -1,7 +1,5 @@
 // Make sure your mapping types are set up in the '../types' file
 import {States, Hotels} from '../types';
-import states from './states.json';
-import hotels from './example.json';
 
 interface JsonFile {
   [key: string]: string;
